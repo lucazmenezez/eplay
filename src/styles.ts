@@ -1,6 +1,6 @@
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
-const cores = {
+export const cores = {
   branco: '#EEEEEE',
   preto: '#111111',
   cinza: '#333333',
@@ -13,10 +13,18 @@ export const GlobalCss = createGlobalStyle`
     margin: 0;
     box-sizing: border-box;
     font-family: Roboto, sans-serif;
+    list-style: none;
   }
 
   body {
     background-color: ${cores.preto};
     color: ${cores.branco};
+    margin-top: 40px;
   }
+`
+
+export const Container = styled.div`
+  max-width: 1024px;
+  margin: 0 auto;
+  width: 100%;
 `

@@ -84,12 +84,12 @@ export const ModalContent = styled.div`
   iframe {
     display: block;
     max-width: 100%;
+    border-radius: 8px;
   }
 
   iframe {
     width: 960px;
     height: 480px;
     border: none;
-    border-radius: 8px;
   }
 `

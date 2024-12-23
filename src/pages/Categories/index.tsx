@@ -1,106 +1,49 @@
+import { useEffect, useState } from 'react'
 import ProductsList from '../../components/ProductsList'
-import Game from '../../models/Game'
+import { Game } from '../Home'
 
-import residentEvil from '../../assets/images/resident_evil.png'
-import fifa from '../../assets/images/fifa.png'
-import diablo from '../../assets/images/diablo.png'
-import starWars from '../../assets/images/star_wars.png'
-import zelda from '../../assets/images/zelda.png'
-import streetFighter from '../../assets/images/street_fighter.png'
+const Categories = () => {
+  const [gamesAcao, setGamesAcao] = useState<Game[]>([])
+  const [gamesEsportes, setGamesEsportes] = useState<Game[]>([])
+  const [gamesSimulacao, setGamesSimulacao] = useState<Game[]>([])
+  const [gamesRpg, setGamesRpg] = useState<Game[]>([])
+  const [gamesLuta, setGamesLuta] = useState<Game[]>([])
 
-const promocoes: Game[] = [
-  {
-    id: 1,
-    image: residentEvil,
-    title: 'Resident Evil 4',
-    system: 'Windows',
-    category: 'Ação',
-    description:
-      'Resident Evil 4, conhecido no Japão como Biohazard 4, é um jogo eletrônico de survival horror...',
-    infos: ['10%', 'R$ 250,00']
-  },
-  {
-    id: 2,
-    image: fifa,
-    title: 'FIFA 23',
-    system: 'PS5',
-    category: 'Esportes',
-    description:
-      'EA SPORTS™ FIFA 23 traz o Jogo de Todo Mundo aos gramados com a tecnologia HyperMotion2...',
-    infos: ['50%', 'R$ 99,99']
-  },
-  {
-    id: 3,
-    image: residentEvil,
-    title: 'Resident Evil 4',
-    system: 'Windows',
-    category: 'Ação',
-    description:
-      'Resident Evil 4, conhecido no Japão como Biohazard 4, é um jogo eletrônico de survival horror...',
-    infos: ['10%', 'R$ 250,00']
-  },
-  {
-    id: 4,
-    image: fifa,
-    title: 'FIFA 23',
-    system: 'PS5',
-    category: 'Esportes',
-    description:
-      'EA SPORTS™ FIFA 23 traz o Jogo de Todo Mundo aos gramados com a tecnologia HyperMotion2...',
-    infos: ['50%', 'R$ 99,99']
-  }
-]
+  useEffect(() => {
+    fetch('https://fake-api-tau.vercel.app/api/eplay/acao')
+      .then((res) => res.json())
+      .then((res) => setGamesAcao(res))
 
-const emBreve: Game[] = [
-  {
-    id: 5,
-    image: diablo,
-    title: 'Diablo 4',
-    system: 'Windows',
-    category: 'RPG',
-    description:
-      'Diablo IV é um RPG de ação em desenvolvimento pela Blizzard Entertainment.',
-    infos: ['05/04']
-  },
-  {
-    id: 6,
-    image: starWars,
-    title: 'Star Wars Jedi Survivor',
-    system: 'Xbox Series S',
-    category: 'Aventura',
-    description:
-      'Star Wars Jedi: Survivor é um próximo jogo de ação e aventura desenvolvido pela Respawn...',
-    infos: ['05/04']
-  },
-  {
-    id: 7,
-    image: streetFighter,
-    title: 'Street Fighter 6',
-    system: 'PS5',
-    category: 'luta',
-    description:
-      'Street Fighter 6 é um próximo jogo de luta desenvolvido e publicado pela Capcom.',
-    infos: ['08/09']
-  },
-  {
-    id: 8,
-    image: zelda,
-    title: 'The Legend of Zelda',
-    system: 'Windows',
-    category: 'RPG',
-    description:
-      'Uma aventura épica pela terra e pelos céus de Hyrule aguarda em The Legend of Zelda™...',
-    infos: ['06/08']
-  }
-]
+    fetch('https://fake-api-tau.vercel.app/api/eplay/esportes')
+      .then((res) => res.json())
+      .then((res) => setGamesEsportes(res))
 
-const Categories = () => (
-  <>
-    <ProductsList games={promocoes} title="RPG" background="gray" />
-    <ProductsList games={emBreve} title="Ação" background="black" />
-    <ProductsList games={promocoes} title="Aventura" background="gray" />
-    <ProductsList games={emBreve} title="FPS" background="black" />
-  </>
-)
+    fetch('https://fake-api-tau.vercel.app/api/eplay/simulacao')
+      .then((res) => res.json())
+      .then((res) => setGamesSimulacao(res))
+
+    fetch('https://fake-api-tau.vercel.app/api/eplay/rpg')
+      .then((res) => res.json())
+      .then((res) => setGamesRpg(res))
+
+    fetch('https://fake-api-tau.vercel.app/api/eplay/luta')
+      .then((res) => res.json())
+      .then((res) => setGamesLuta(res))
+  }, [])
+
+  return (
+    <>
+      <ProductsList games={gamesAcao} title="Ação" background="black" />
+      <ProductsList games={gamesEsportes} title="Esportes" background="gray" />
+      <ProductsList
+        games={gamesSimulacao}
+        title="Simulação"
+        background="black"
+      />
+      <ProductsList games={gamesRpg} title="RPG" background="gray" />
+      <ProductsList games={gamesLuta} title="Luta" background="black" />
+    </>
+  )
+}
 
 export default Categories

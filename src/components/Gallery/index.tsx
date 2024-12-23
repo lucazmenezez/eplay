@@ -7,11 +7,7 @@ import close from '../../assets/images/close.png'
 import hogwarts from '../../assets/images/fundo_hogwarts.png'
 import resident from '../../assets/images/resident_evil.png'
 import { useState } from 'react'
-
-interface GalleryItem {
-  type: 'image' | 'video'
-  url: string
-}
+import { GalleryItem } from '../../pages/Home'
 
 const mock: GalleryItem[] = [
   {

@@ -80,6 +80,11 @@ export const ModalContent = styled.div`
     }
   }
 
+  > img {
+    width: 100%;
+    max-height: 480px;
+  }
+
   img,
   iframe {
     display: block;

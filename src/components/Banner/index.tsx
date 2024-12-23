@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import { Game } from '../../pages/Home'
 import { Imagem, Precos, Titulo } from './styles'
 
-import bannerImg from '../../assets/images/banner-homem-aranha.png'
 import Tag from '../Tag'
 import Button from '../Button'
 import { formataPreco } from '../ProductsList'
@@ -33,7 +32,7 @@ const Banner = () => {
           </Precos>
         </div>
         <Button
-          to="/produto"
+          to={`/product/${banner.id}`}
           type="link"
           title="Clique aqui para aproveitar esta oferta"
         >

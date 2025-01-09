@@ -7,9 +7,12 @@ import boleto from '../../assets/images/barcode.svg'
 import cartao from '../../assets/images/credit-card.svg'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import { usePurchaseMutation } from '../../services/api'
 
 const Checkout = () => {
   const [payWithCard, setPayWithCard] = useState(false)
+
+  const [purchase, { isError, isLoading, data }] = usePurchaseMutation()
 
   const form = useFormik({
     initialValues: {
@@ -71,7 +74,39 @@ const Checkout = () => {
       )
     }),
     onSubmit: (values) => {
-      console.log(values)
+      purchase({
+        products: [
+          {
+            id: 1,
+            price: 10
+          }
+        ],
+        billing: {
+          name: values.fullName,
+          email: values.email,
+          document: values.cpf
+        },
+        delivery: {
+          email: values.deliveryEmail
+        },
+        payment: {
+          card: {
+            active: payWithCard,
+            owner: {
+              name: values.cardOwner,
+              document: values.cpfCardOwner
+            },
+            name: values.cardDisplayName,
+            number: values.cardNumber,
+            expires: {
+              month: 1,
+              year: 2025
+            },
+            code: Number(values.cardCode)
+          },
+          installments: 1
+        }
+      })
     }
   })
 

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const Items = styled.ul`
   display: flex;
@@ -29,7 +29,7 @@ export const Item = styled.li`
     height: 150px;
     width: 150px;
     border-radius: 8px;
-    border: 2px solid ${cores.branco};
+    border: 2px solid ${colors.white};
     object-fit: cover;
   }
 

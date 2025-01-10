@@ -23,6 +23,7 @@ export const Action = styled.div`
 
 export const Item = styled.li`
   position: relative;
+  cursor: zoom-in;
 
   > img {
     height: 150px;
@@ -78,6 +79,10 @@ export const ModalContent = styled.div`
     h4 {
       font-size: 18px;
       font-weight: bold;
+    }
+
+    > img {
+      cursor: pointer;
     }
   }
 

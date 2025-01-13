@@ -83,12 +83,15 @@ export const ModalContent = styled.div`
 
     > img {
       cursor: pointer;
+      height: 16px;
+      width: 16px;
     }
   }
 
   > img {
     width: 100%;
     max-height: 480px;
+    object-fit: cover;
   }
 
   img,
